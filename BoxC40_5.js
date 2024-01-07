@@ -3,6 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <title>インタラクティブなサイコロゲーム</title>
+
+
+<style>
+  body {
+    font-size: 24px; /* Adjust the font size as needed */
+  }
+  button {
+    font-size: 24px; /* Adjust the font size as needed */
+  }
+</style>
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+  }
+</style>
+
+
+<div style="text-align: center;">
+  <!-- Your existing content here -->
+</div>
+
+
 <script>
 let a = 0;
 let b = 0;
@@ -46,27 +73,31 @@ function rollDelta() {
     c = a * b;
     // Adjust c if it's greater than 40
     c = c % 40;
-    document.getElementById('deltaResult').innerText = 'δの結果: ' + b + ' そして c = ' + c;
+    document.getElementById('deltaResult').innerText = 'δの結果: ' + b + ' したがって c = ' + c;
     document.getElementById('epsilonButton').style.display = 'inline';
     // Hide delta button after rolling
     document.getElementById('deltaButton').style.display = 'none';
+
 }
 
 function rollEpsilon() {
     const epsilon = rollDice(6);
-    let color = (epsilon % 2 !== 0) ? '青' : '白';
-    document.getElementById('epsilonResult').innerText = 'εの結果: ' + epsilon + ' そして色は ' + color;
+    let color = (epsilon % 2 !== 0) ? 'blue' : 'white';
+    const epsilonResult = document.getElementById('epsilonResult');
+    epsilonResult.innerText = 'εの結果: ' + epsilon + ' したがって色は ' + color;
+    epsilonResult.style.color = '青'; // Set the text color to 青
     totalCount += c;
 
     // 色に基づいて青と白の玉の個数を計算
-    let redCount = color === '青' ? c : 40 - c;
-    let yellowCount = color === '白' ? c : 40 - c;
+    let blueCount = color === 'blue' ? c : 40 - c;
+    let whiteCount = color === 'white' ? c : 40 - c;
 
     // 最終結果を表示
-    document.getElementById('finalResult').innerText = '箱Bの青は ' + redCount + ' 個、白は ' + yellowCount + ' 個になりました。';
+    document.getElementById('finalResult').innerText = '箱 Ｃ の青は ' + blueCount + ' 個、白は ' + whiteCount + ' 個になりました。';
     // Hide epsilon button after rolling
     document.getElementById('epsilonButton').style.display = 'none';
 }
+
 
 </script>
 </head>
